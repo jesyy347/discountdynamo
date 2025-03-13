@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const db = require("./db");
@@ -38,4 +39,8 @@ router.post("/auto-detect", async (req, res) => {
             res.status(400).json({ message: "Payment verification failed" });
         }
     } catch (error) {
-        res.status
+        res.status(500).json({ message: "Error processing auto detection", error });
+    }
+});
+
+module.exports = router;
